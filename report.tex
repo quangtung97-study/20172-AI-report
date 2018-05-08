@@ -325,7 +325,39 @@ thì nó là vị trí cho phép được đánh ở lượt chơi kế tiếp.
 \includegraphics[width=\textwidth]{legal-action-impl.png}
 \end{figure}
 
-
 \subsection{Hàm tính giá trị heuristic}
+
+Từ ma trận các nước đã đi, ta trích ra tất cả những đường (thẳng, ngang hoặc chéo). \\
+Ví dụ đường chéo: 
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{matrix-line.png}
+\end{figure}
+\noindent Sẽ được trích thành một vector: 
+\begin{figure}[H]
+\centering
+\includegraphics[width=4cm]{line.png}
+\end{figure}
+
+Từ các đường đã trích ra, ta sẽ tính điểm số trên các đường này rồi cộng tổng các điếm sổ lại. 
+Các đường sau đó được trích ra thành các đoạn để có thể dễ dàng tính trọng số. 
+Việc trích thành các đoạn ra sao cũng phụ thuộc vào người chơi (quân X hay O) đang được xét. \\
+Ví dụ đường: 
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{line2.png}
+\end{figure}
+\noindent Sẽ được trích thành 2 đoạn (nếu được xét theo X): 
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{segment1.png}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=4cm]{segment2.png}
+\end{figure}
+Ta sẽ tính điểm dựa trên từng đoạn, cộng tổng sẽ được điểm của một đường. 
+Từ đó ta tính được giá trị heuristic của một trạng thái trong game. 
+
 
 \end{document}

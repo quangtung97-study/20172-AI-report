@@ -141,7 +141,7 @@ Tạ Quang Tùng \\
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Giáo viên hướng dẫn:} \\
-Lê Thanh Hương
+TS. Lê Thanh Hương
 \end{flushright}
 \end{minipage}\\[2cm]
 
@@ -175,7 +175,9 @@ Lê Thanh Hương
 \newpage
 \setcounter{page}{1}
 
-\section{Thuật toán minimax}
+
+\section{Các thuật toán tìm kiếm trong game đối kháng}
+\subsection{Thuật toán minimax}
 Trong Lý thuyết trò chơi (game theory), giá trị maximin của một người chơi là giá trị cao nhất mà người chơi chắc chắn có thể đạt được 
 mà chưa cần biết những lượt chơi của những người chơi khác. Được định nghĩa là:
 $$
@@ -239,7 +241,7 @@ def minimax(node, depth, maximizing):
 Thuật toán minimax có độ phức tạp lũy thừa theo độ sâu và số lượng nhánh của mỗi node. Do đó nó không khả thi khi áp dụng vào thực tế. 
 Tuy nhiên, hiệu năng của thuật toán có thể tăng lên đáng kể nhờ sử dụng cắt tỉa Alpha-Beta. 
 
-\section{Thuật toán cắt tỉa Alpha-Beta}
+\subsection{Thuật toán cắt tỉa Alpha-Beta}
 Là thuật toán tìm kiếm cải tiến thuật toán tìm kiếm minimax bằng cách giảm số node phải đánh giá. 
 Nó sẽ dừng hoàn toàn đánh giá một nước đi nếu như nó có thể chứng minh được rằng nước đi đó là tồi hơn những nước đi đã được xét. 
 
@@ -298,6 +300,32 @@ def alphabeta(node, depth, alpha, beta, maximizing):
         return v
 \end{python}
 
-\section{Hàm tính giá trị heuristic}
+\section{Các thuật toán áp dụng trong game cờ caro}
+Mô hình bàn cờ được áp dụng là sử dụng ma trận có kích thước lớn tùy ý. 
+
+\subsection{Xác định các nước đi cho phép}
+Ý tưởng: Các nước đi cho phép ở một trạng thái bất kì của game được xác định là khoảng cách tối đa 
+là 2 đến ít nhất một quân cờ đã đánh trước đó trong game 
+(Quân cờ đầu tiên chỉ có 1 nước có thể đi duy nhất là tại trung tâm bàn cờ). 
+\begin{figure}[H]
+\centering
+\caption{Các nước đi cho phép}
+\includegraphics[width=12cm]{legal-actions.png}
+\end{figure}
+
+\noindent Cách xác định: Sử dụng một ma trận khác lưu các giá trị số với giá trị ban đầu là 0. 
+Với mối ví trị được đánh, 5x5 các ô xung quanh (tính cả tâm) được tăng giá trị lên 1. 
+Ban đầu chỉ có vị trí trung tâm là được khởi tạo bằng 1. 
+Tất cả những ô mà có số khác 0 và không phải là vị trí đã được đánh, 
+thì nó là vị trí cho phép được đánh ở lượt chơi kế tiếp. 
+
+\begin{figure}[H]
+\centering
+\caption{Xác định các nước đi cho phép}
+\includegraphics[width=\textwidth]{legal-action-impl.png}
+\end{figure}
+
+
+\subsection{Hàm tính giá trị heuristic}
 
 \end{document}
